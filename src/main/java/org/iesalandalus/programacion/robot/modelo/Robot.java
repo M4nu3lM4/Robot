@@ -7,25 +7,27 @@ public class Robot {
     private Zona zona;
     private Orientacion orientacion;
 
+    /**1º CREAMOS EL CONSTRUCTOR ROBOT POR DEFECTO**/
     public Robot(){
 
 
     }
+    /**2º CREAMOS EL CONSTRUCTOR DEL ROBOT CON EL PARÁMETRO ZONA**/
     public Robot(Zona zona) {
 
         this.zona = zona;
     }
-
+/**3º CONSTRUCTOR DEL ROBOT CON LOS PARÁMETROS ZONA Y ORIENTACION **/
     public Robot(Zona zona, Orientacion orientacion) {
         this(zona);
         this.orientacion = orientacion;
     }
-
+/**4º CONSTRUCTOR DEL ROBOT CON TODOS LOS PARÁMETROS **/
     public Robot(Zona zona, Orientacion orientacion, Coordenada coordenada) {
         this(zona, orientacion);
         this.coordenada = coordenada;
     }
-    /**3º CONSTRUCTOR COPIA DE ROBOT **/
+    /**5º CONSTRUCTOR COPIA DE ROBOT **/
     public Robot(Robot robot) {
 
         this.zona = robot.zona;
@@ -33,7 +35,7 @@ public class Robot {
         this.coordenada = robot.coordenada;
 
     }
-/**4º METODOS SETTER Y GETTER PARA zona, orientacion y coordenada **/
+/**6º METODOS SETTER Y GETTER PARA zona, orientacion y coordenada **/
 
     /**1. METODO GETCOORDENADA OBTENEMOS LA COORDENADA **/
     public Coordenada getCoordenada() {
@@ -59,7 +61,7 @@ public class Robot {
     private void setOrientacion(Orientacion orientacion) {
         this.orientacion = orientacion;
     }
-    /**4º METODO AVANZAR HACEMOS QUE EL ROBOT AVANZE **/
+    /**7º METODO AVANZAR HACEMOS QUE EL ROBOT AVANZE **/
     public void avanzar(){
         int x = coordenada.x();
         int y = coordenada.y();
@@ -100,7 +102,7 @@ public class Robot {
 
     }
 
-/**5º CREAMOS EL EQUALS PARA COMPARAR LOS ROBOTS **/
+/**8º CREAMOS EL EQUALS PARA COMPARAR LOS ROBOTS **/
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -108,17 +110,17 @@ public class Robot {
         Robot robot = (Robot) o;
         return Objects.equals(coordenada, robot.coordenada) && Objects.equals(zona, robot.zona) && orientacion == robot.orientacion;
     }
-/**6º CREAMOS EL HASHCODE PARA PODER USAR LOS ROBOTS EN EL SET **/
+/**9º CREAMOS EL HASHCODE PARA PODER USAR LOS ROBOTS EN EL SET **/
     @Override
     public int hashCode() {
         return Objects.hash(coordenada, zona, orientacion);
     }
-/**7º CREAMOS EL TOSTRING PARA VER LOS DATOS DEL ROBOT **/
+/**10º CREAMOS EL TOSTRING PARA VER LOS DATOS DEL ROBOT **/
     @Override
     public String toString() {
         return String.format("[coordenada=%s, zona=%s, orientacion=%s]", coordenada, zona, orientacion);
     }
-/**8º CREAMOS EL METODO GIRARALADERECHA**/
+/**11º CREAMOS EL METODO GIRARALADERECHA**/
     public void girarALaDerecha() {
         switch (orientacion) {
 
@@ -158,7 +160,7 @@ public class Robot {
                 throw new IllegalStateException("Orientación inválida");
     }
 }
-/**9º CREAMOS EL METODO GIRARALAIZQUIERDA**/
+/**12º CREAMOS EL METODO GIRARALAIZQUIERDA**/
     public void girarALaIzquierda() {
         switch (orientacion) {
 

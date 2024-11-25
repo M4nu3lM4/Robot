@@ -3,7 +3,11 @@ plugins {
     id 'jvm-test-suite'
     id 'application'
 }
+java{
 
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
 group = 'org.iesalandalus.programacion.robot'
 version = '1.0'
 
