@@ -3,14 +3,14 @@ package org.iesalandalus.programacion.robot.modelo;
 import java.util.Objects;
 
 public class Robot {
-        private Coordenada coordenada;
-        private Zona zona;
-        private Orientacion orientacion;
+    private Coordenada coordenada;
+    private Zona zona;
+    private Orientacion orientacion;
 
-   public Robot(){
+    public Robot(){
 
 
-   }
+    }
     public Robot(Zona zona) {
 
         this.zona = zona;
@@ -35,31 +35,31 @@ public class Robot {
     }
 /**4º METODOS SETTER Y GETTER PARA zona, orientacion y coordenada **/
 
-/**1. METODO GETCOORDENADA OBTENEMOS LA COORDENADA **/
+    /**1. METODO GETCOORDENADA OBTENEMOS LA COORDENADA **/
     public Coordenada getCoordenada() {
         return coordenada;
     }
-/**1.1 METODO SETCOORDENADA ASIGNAMOS UNA COORDENADA **/
+    /**1.1 METODO SETCOORDENADA ASIGNAMOS UNA COORDENADA **/
     private void setCoordenada(Coordenada coordenada) {
         this.coordenada = coordenada;
     }
-/**2. METODO GETZONA OBTENEMOS LA ZONA **/
+    /**2. METODO GETZONA OBTENEMOS LA ZONA **/
     public Zona getZona() {
         return zona;
     }
-/**2.1 METODO SETZONA ASIGNAMOS UNA ZONA **/
+    /**2.1 METODO SETZONA ASIGNAMOS UNA ZONA **/
     private void setZona(Zona zona) {
         this.zona = zona;
     }
-/**3. METODO GETORIENTACION OBTENEMOS LA ORIENTACION **/
+    /**3. METODO GETORIENTACION OBTENEMOS LA ORIENTACION **/
     public Orientacion getOrientacion() {
         return orientacion;
     }
-/**3.1 METODO SETORIENTACION ASIGNAMOS UNA ORIENTACION **/
+    /**3.1 METODO SETORIENTACION ASIGNAMOS UNA ORIENTACION **/
     private void setOrientacion(Orientacion orientacion) {
         this.orientacion = orientacion;
     }
-/**4º METODO AVANZAR HACEMOS QUE EL ROBOT AVANZE **/
+    /**4º METODO AVANZAR HACEMOS QUE EL ROBOT AVANZE **/
     public void avanzar(){
         int x = coordenada.x();
         int y = coordenada.y();
@@ -100,13 +100,31 @@ public class Robot {
 
     }
 
-    public void girarDerecha(){
-
+/**5º CREAMOS EL EQUALS PARA COMPARAR LOS ROBOTS **/
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Robot robot = (Robot) o;
+        return Objects.equals(coordenada, robot.coordenada) && Objects.equals(zona, robot.zona) && orientacion == robot.orientacion;
+    }
+/**6º CREAMOS EL HASHCODE PARA PODER USAR LOS ROBOTS EN EL SET **/
+    @Override
+    public int hashCode() {
+        return Objects.hash(coordenada, zona, orientacion);
+    }
+/**7º CREAMOS EL TOSTRING PARA VER LOS DATOS DEL ROBOT **/
+    @Override
+    public String toString() {
+        return String.format("[coordenada=%s, zona=%s, orientacion=%s]", coordenada, zona, orientacion);
+    }
+/**8º CREAMOS EL METODO GIRARALADERECHA**/
+    public void girarALaDerecha() {
         switch (orientacion) {
 
-        case NORTE:
-            orientacion = Orientacion.ESTE;
-            break;
+            case NORTE:
+                orientacion = Orientacion.ESTE;
+                break;
 
             case NORESTE:
                 orientacion = Orientacion.NORTE;
@@ -136,20 +154,16 @@ public class Robot {
                 orientacion = Orientacion.SUR;
                 break;
 
-                default:
-                    throw new IllegalStateException("Orientación inválida");
-        }
-
+            default:
+                throw new IllegalStateException("Orientación inválida");
     }
-
-
-
-    public void girarIzquierda() {
-
+}
+/**9º CREAMOS EL METODO GIRARALAIZQUIERDA**/
+    public void girarALaIzquierda() {
         switch (orientacion) {
 
             case NORTE:
-                orientacion = Orientacion.OESTE;
+                orientacion = Orientacion.ESTE;
                 break;
 
             case NORESTE:
@@ -157,19 +171,19 @@ public class Robot {
                 break;
 
             case ESTE:
-                orientacion = Orientacion.NORESTE;
+                orientacion = Orientacion.NOROESTE;
                 break;
 
             case SURESTE:
-                orientacion = Orientacion.ESTE;
+                orientacion = Orientacion.NORESTE;
                 break;
 
             case SUR:
-                orientacion = Orientacion.OESTE;
+                orientacion = Orientacion.ESTE;
                 break;
 
             case SUROESTE:
-                orientacion = Orientacion.NORTE;
+                orientacion = Orientacion.SUR;
                 break;
 
             case OESTE:
@@ -177,33 +191,11 @@ public class Robot {
                 break;
 
             case NOROESTE:
-                orientacion = Orientacion.ESTE;
+                orientacion = Orientacion.SUR;
                 break;
 
             default:
                 throw new IllegalStateException("Orientación inválida");
-
         }
-
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Robot robot = (Robot) o;
-        return Objects.equals(coordenada, robot.coordenada) && Objects.equals(zona, robot.zona) && orientacion == robot.orientacion;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(coordenada, zona, orientacion);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("[coordenada=%s, zona=%s, orientacion=%s]", coordenada, zona, orientacion);
-    }
-
 }

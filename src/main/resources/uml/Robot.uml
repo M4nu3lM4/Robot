@@ -778,7 +778,7 @@
   <Codegen:External xmi:id="_aHca0IUuEe6MC-yrh3G8mA" name="Orientacion" base_Classifier="_aHZXgIUuEe6MC-yrh3G8mA"/>
   <Codegen:External xmi:id="_aHihcIUuEe6MC-yrh3G8mA" name="Coordenada" base_Classifier="_aHe3EYUuEe6MC-yrh3G8mA"/>
   <Codegen:External xmi:id="_aHp2MIUuEe6MC-yrh3G8mA" name="ControladorRobot" base_Classifier="_aHmy4IUuEe6MC-yrh3G8mA"/>
-  <Codegen:External xmi:id="_n44KYIUuEe6MC-yrh3G8mA" name="org.iesalandalus.programacion.robot.modelo.ControladorRobot" base_Classifier="_RS9tcIUuEe6MC-yrh3G8mA"/>
+  <Codegen:External xmi:id="_n44KYIUuEe6MC-yrh3G8mA" name="org.iesalandalus.programacion.robot.ControladorRobot" base_Classifier="_RS9tcIUuEe6MC-yrh3G8mA"/>
   <record:Record xmi:id="_uWl0sIUuEe6MC-yrh3G8mA" base_Class="_NWwMAIUtEe6lAqwTcRpJlQ"/>
   <record:Record xmi:id="_1J0cAIUuEe6MC-yrh3G8mA" base_Class="_gTBowIUtEe6lAqwTcRpJlQ"/>
   <Codegen:External xmi:id="_UXBX0KZWEe-9uq0pAHyi0A" name="java.lang.Exception" base_Classifier="_UW8fUKZWEe-9uq0pAHyi0A"/>
