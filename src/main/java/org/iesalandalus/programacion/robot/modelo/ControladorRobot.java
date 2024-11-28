@@ -1,12 +1,17 @@
 package org.iesalandalus.programacion.robot.modelo;
 
 
+import javax.naming.OperationNotSupportedException;
+
 public class ControladorRobot {
 
     private Robot robot;
 
 
     public ControladorRobot(Robot robot) {
+        if(robot == null){
+            throw new NullPointerException("El robot no puede ser nulo.");
+        }
         this.robot = robot;
     }
 
@@ -14,9 +19,9 @@ public class ControladorRobot {
         return robot;
     }
 
-    public char ejecutar(char comando)throws RobotExcepcion {
+    public void ejecutar(char comando) throws OperationNotSupportedException, RobotExcepcion {
 
-        switch (comando) {
+        switch (Character.toUpperCase(comando)  ) {
             case 'A':
                 robot.avanzar();
                 break;
@@ -27,9 +32,7 @@ public class ControladorRobot {
                 robot.girarALaIzquierda();
                 break;
             default:
-                throw new RobotExcepcion("Comando no válido");
+                throw new OperationNotSupportedException("Comando desconocido.");
         }
-
-        return comando;
     }
 }

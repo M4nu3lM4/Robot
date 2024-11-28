@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -79,7 +80,7 @@ class ZonaTest {
     void perteneceConPuntoNullLanzaException() {
         Zona zona = new Zona(10, 10);
         NullPointerException npe = assertThrows(NullPointerException.class, () -> zona.pertenece(null));
-        assertEquals("La coordenada no puede ser nula.", npe.getMessage());
+        assertEquals("La coordenada no puede ser nula", npe.getMessage());
     }
 
 }
