@@ -12,14 +12,17 @@ public class ControladorRobot {
         if(robot == null){
             throw new NullPointerException("El robot no puede ser nulo.");
         }
-        this.robot = robot;
+        this.robot = new Robot(robot);
     }
-
+/**2º CREAMOS EL GETTER PARA OBTENER EL ROBOT**/
     public Robot getRobot() {
-        return robot;
-    }
 
-    public void ejecutar(char comando) throws OperationNotSupportedException, RobotExcepcion {
+        return new Robot(robot);
+
+
+    }
+/**3º CREAMOS EL CONSTRUCTOR EJECUTAR PARA EJECUTAR UN COMANDO DE MOVIMIENTO**/
+    public void ejecutar(char comando) throws RobotExcepcion {
 
         switch (Character.toUpperCase(comando)  ) {
             case 'A':
@@ -32,7 +35,7 @@ public class ControladorRobot {
                 robot.girarALaIzquierda();
                 break;
             default:
-                throw new OperationNotSupportedException("Comando desconocido.");
+                throw new RobotExcepcion("Comando desconocido.");
         }
     }
 }
