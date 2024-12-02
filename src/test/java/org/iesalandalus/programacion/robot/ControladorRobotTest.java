@@ -90,7 +90,7 @@ class ControladorRobotTest {
     @ParameterizedTest(name = "Cuando llamamos a ejecutar con un comando no válido`{0}` lanza excepción")
     @CsvSource({"*", "4", "v", "F"})
     void ejecutarComandoNoValidoLanzaExcepcion(char comando)  {
-        RobotExcepcion re = assertThrows(RobotExcepcion.class, () -> controladorRobot.ejecutar(comando));
+        RobotException re = assertThrows(RobotException.class, () -> controladorRobot.ejecutar(comando));
         assertEquals("Comando desconocido.", re.getMessage());
     }
 

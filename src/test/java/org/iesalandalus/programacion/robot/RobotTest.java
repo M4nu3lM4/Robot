@@ -160,7 +160,7 @@ class RobotTest {
         Zona zona = new Zona();
         Coordenada coordenada = getCoordenada(x, y);
         Robot robot = new Robot(zona, orientacion, coordenada);
-        RobotExcepcion re = assertThrows(RobotExcepcion.class, robot::avanzar);
+        RobotException re = assertThrows(RobotException.class, robot::avanzar);
         assertEquals("No se puede avanzar, ya que se sale de la zona.", re.getMessage());
     }
 

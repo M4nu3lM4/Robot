@@ -1,76 +1,122 @@
 package org.iesalandalus.programacion.robot;
+
 import org.iesalandalus.programacion.robot.modelo.*;
+import org.iesalandalus.programacion.robot.vista.Consola;
 import org.iesalandalus.programacion.utilidades.Entrada;
-import org.iesalandalus.programacion.robot.*;
+
 public class Main {
 
-    private ControladorRobot controladorRobot;
+    private static ControladorRobot controladorRobot;
 
-    public static void main(String[] args) {
+    /**
+     * 1ºCREAMOS EL CONSTRUCTOR DEL MAIN
+     **/
+    public static void main(String[] args)  {
+        int opcion = 0;
+        do {
 
+            System.out.println("Elige una opción:");
+            opcion = Entrada.entero();
 
-        private static void ejecutarOpcion(int opcion){
+            if ((opcion >= 0 && opcion < 5) || controladorRobot != null) {
+                try{
+                    ejecutarOpcion(opcion);
+                    System.out.println(controladorRobot.getRobot().toString());
+                }catch(Exception e){
+                    System.out.println("No se puede ejecutar: "+e.getMessage() + "\n");
+                }
 
-            System.out.println("Por favor elija una opción:");
-
-
-            switch (opcion) {
-                case 1:
-                    controlarRobotDefecto();
-                    break;
-                case 2:
-                    controlarRobotZona();
-                    break;
-                case 3:
-                    controlarRobotZonaOrientacion();
-                    break;
-                case 4:
-                    controlarRobotZonaOrientacionCoordenada();
-                    break;
-                case 5:
-                    ejecutarComando();
-                    break;
-                case 0:
-                    System.exit(0);
-                default:
-                    System.out.println("Opción no válida.");
+            } else {
+                System.out.println("Opción no valida crea un robot antes");
             }
+        } while (opcion != 0);
+    }
 
+    /**
+     * 2º CREAMOS EL METODO QUE EJECUTA LA OPCIÓN ELEJIDA
+     **/
+    private static void ejecutarOpcion(int opcion) throws RobotException {
+
+        switch (opcion) {
+            case 1:
+                controlarRobotDefecto();
+
+                break;
+            case 2:
+                controlarRobotZona();
+
+                break;
+            case 3:
+                controlarRobotZonaOrientacion();
+                break;
+            case 4:
+                controlarRobotZonaOrientacionCoordenada();
+                break;
+            case 5:
+                ejecutarComando();
+
+                break;
+            case 0:
+                Consola.despedirse();
+                System.exit(0);
+            default:
+                System.out.println("Opción no válida.");
         }
 
-
     }
+    /**3º CREAMOS LOS METODOS QUE CONTROLAN LOS ROBOTS SEGÚN LAS OPCIONES ELEJIDAS**/
 
+    /**
+     * 3.1 CREAMOS EL CONTROLADOR DE CONTROLAR EL ROBOT POR DEFECTO
+     **/
     private static void controlarRobotDefecto() {
-
-        Robot robot = new Robot();
+        controladorRobot = new ControladorRobot(new Robot());
 
     }
 
+    /**
+     * 3.2 CREAMOS EL CONTROLADOR DE CONTROLAR EL ROBOT CON LA ZONA ESPECIFICADA
+     **/
     private static void controlarRobotZona() {
 
-        Robot robot = new Robot(new Zona());
+
+         controladorRobot = new ControladorRobot(new Robot(Consola.elegirZona()));
+
+
 
     }
 
+    /**
+     * 3.3 CREAMOS EL CONTROLADOR DE CONTROLAR EL ROBOT CON LA ZONA Y LA ORIENTACIÓN ESPECIFICADAS
+     **/
     private static void controlarRobotZonaOrientacion() {
 
-        Robot robot = new Robot(new Zona(), Orientacion.NORTE);
+
+        controladorRobot= new ControladorRobot(new Robot(Consola.elegirZona(), Consola.elegirOrientacion()));
+
 
 
     }
 
+    /**
+     * 3.4 CREAMOS EL CONTROLADOR DE CONTROLAR EL ROBOT CON LA ZONA, LA ORIENTACIÓN Y LA COORDENADA ESPECIFICADAS
+     **/
     private static void controlarRobotZonaOrientacionCoordenada() {
 
-        Robot robot = new Robot(new Zona(), Orientacion.NORTE, new Coordenada(0, 0));
+
+        ControladorRobot controladorRobot= new ControladorRobot(new Robot(Consola.elegirZona(), Consola.elegirOrientacion(), Consola.elegirCoordenada()));
+
 
     }
 
-    private static void ejecutarComando() {
+    /**
+     * 4º CREAMOS EL METODO QUE EJECUTA UN COMANDO DE MOVIMIENTO DEL ROBOT
+     **/
+    private static void ejecutarComando() throws RobotException {
 
+        System.out.println("Introduce un comando (A, D, I): ");
+        char comando = Entrada.caracter();
+        controladorRobot.ejecutar(comando);
 
-        Robot robot = new Robot();
-
-        controladorRobot = new ControladorRobot(robot);
     }
 }

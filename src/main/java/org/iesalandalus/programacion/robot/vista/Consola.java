@@ -104,7 +104,7 @@ public class Consola {
         } while (Character.toLowerCase(comando) != 'a' && Character.toLowerCase(comando) != 'd' && Character.toLowerCase(comando) != 'i'  );
         return comando;
     }
-
+/**8º CREAMOS EL METODO QUE MOSTRARÁ EL ROBOT QUE CONTROLAMOS**/
     public static void mostrarRobot(ControladorRobot controladorRobot) {
         if (controladorRobot == null) {
             System.out.println("El robot es nulo.");
@@ -112,7 +112,7 @@ public class Consola {
             System.out.println(controladorRobot.getRobot().toString());
         }
     }
-
+/**9º CREAMOS EL METODO QUE MOSTRARÁ EL CONTROLADOR DEL ROBOT**/
     public static void despedirse() {
         System.out.println("Gracias por usar nuestra aplicación. ¡Hasta pronto!");
     }

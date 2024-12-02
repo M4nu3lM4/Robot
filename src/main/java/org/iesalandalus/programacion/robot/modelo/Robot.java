@@ -1,6 +1,4 @@
 package org.iesalandalus.programacion.robot.modelo;
-import javax.naming.*;
-import javax.naming.OperationNotSupportedException;
 import java.util.Objects;
 
 public class Robot {
@@ -29,9 +27,6 @@ public class Robot {
         this.zona = zona;
         this.orientacion = Orientacion.NORTE;
         this.coordenada = this.zona.getCentro();
-
-
-
 
     }
 
@@ -133,7 +128,7 @@ public class Robot {
     /**
      * 7º METODO AVANZAR HACEMOS QUE EL ROBOT AVANZE
      **/
-    public void avanzar() throws RobotExcepcion {
+    public void avanzar() throws RobotException {
 
         int x = coordenada.x();
 
@@ -169,7 +164,7 @@ public class Robot {
                 x--;
             }
 
-            default -> throw new RobotExcepcion("Orientación desconocida: " + orientacion);
+            default -> throw new RobotException("Orientación desconocida: " + orientacion);
 
         }
 
@@ -177,7 +172,7 @@ public class Robot {
         if (zona.pertenece(nuevaCoordenada)) {
             this.coordenada = nuevaCoordenada;
         } else{
-            throw new RobotExcepcion("No se puede avanzar, ya que se sale de la zona.");
+            throw new RobotException("No se puede avanzar, ya que se sale de la zona.");
         }
 
     }
@@ -194,7 +189,7 @@ public class Robot {
         this.orientacion = this.orientacion.previous();
     }
 
-
+    /**10º CREAMOS EL EQUALS O**/
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -202,13 +197,13 @@ public class Robot {
         Robot robot = (Robot) o;
         return Objects.equals(coordenada, robot.coordenada) && Objects.equals(zona, robot.zona) && orientacion == robot.orientacion;
     }
-
+    /**11º CREAMOS EL HASHCODE**/
     @Override
     public int hashCode() {
         return Objects.hash(coordenada, zona, orientacion);
     }
 
-
+    /**12º CREAMOS EL TOSTRING**/
     @Override
     public String toString() {
         return String.format("Zona[coordenada=%s, zona=%s, orientacion=%s]", coordenada, zona, orientacion);
