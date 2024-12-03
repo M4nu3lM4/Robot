@@ -14,8 +14,9 @@ public class Main {
     public static void main(String[] args)  {
         int opcion = 0;
         do {
-
+            Consola.mostrarMenuPrincipal();
             System.out.println("Elige una opción:");
+
             opcion = Entrada.entero();
 
             if ((opcion >= 0 && opcion < 5) || controladorRobot != null) {

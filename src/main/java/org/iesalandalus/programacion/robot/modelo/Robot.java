@@ -206,6 +206,6 @@ public class Robot {
     /**12º CREAMOS EL TOSTRING**/
     @Override
     public String toString() {
-        return String.format("Zona[coordenada=%s, zona=%s, orientacion=%s]", coordenada, zona, orientacion);
+        return String.format("Robot[coordenada=%s, zona=%s, orientacion=%s]", coordenada, zona, orientacion);
     }
 }
