@@ -119,9 +119,13 @@ public class Consola {
 
     public static void mostrarRobot(ControladorRobot controladorRobot) {
         System.out.println();
-        Objects.requireNonNull(controladorRobot, "Aun no se ha creado ningún robot para controlar.");
-        System.out.println(controladorRobot.getRobot());
-        System.out.println();
+        if (controladorRobot == null){
+            System.out.println("Aun no se ha creado ningún robot para controlar.");
+        }else{
+            System.out.println(controladorRobot.getRobot());
+            System.out.println();
+        }
+
     }
 
     public static void despedirse() {
