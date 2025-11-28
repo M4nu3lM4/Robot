@@ -10,9 +10,9 @@ public enum Orientacion {
     OESTE("Oeste"),
     NOROESTE("Noroeste");
 
-    String nombre;
+    private final String nombre;
 
-    private Orientacion(String nombre){
+    private Orientacion(String nombre) {
         this.nombre = nombre;
     }
 

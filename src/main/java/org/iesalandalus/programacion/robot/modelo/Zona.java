@@ -9,47 +9,46 @@ public record Zona(int ancho, int alto) {
     public static final int ALTO_MAXIMO = 100;
 
 
-    public Zona(){
-        this(ANCHO_MINIMO,ALTO_MINIMO);
+    public Zona() {
+        this(ANCHO_MINIMO, ALTO_MINIMO);
     }
 
-    public Zona{
+    public Zona {
         validarAncho(ancho);
         validarAlto(alto);
     }
 
-    private void validarAncho(int ancho){
-        if (ancho < ANCHO_MINIMO || ancho > ANCHO_MAXIMO){
+    private void validarAncho(int ancho) {
+        if (ancho < ANCHO_MINIMO || ancho > ANCHO_MAXIMO) {
             throw new IllegalArgumentException("Ancho no válido.");
         }
     }
 
-    private void validarAlto(int alto){
-        if (alto < ALTO_MINIMO || alto > ALTO_MAXIMO){
+    private void validarAlto(int alto) {
+        if (alto < ALTO_MINIMO || alto > ALTO_MAXIMO) {
             throw new IllegalArgumentException("Alto no válido.");
         }
     }
 
-    public Coordenada getCentro(){
-        return new Coordenada(ancho / 2 ,alto / 2);
+    public Coordenada getCentro() {
+        return new Coordenada(ancho / 2, alto / 2);
     }
 
-    public boolean pertenece(Coordenada coordenada){
+    public boolean pertenece(Coordenada coordenada) {
 
-        Objects.requireNonNull(coordenada,"La coordenada no puede ser nula.");
+        Objects.requireNonNull(coordenada, "La coordenada no puede ser nula.");
 
         return (perteneceX(coordenada.x()) && perteneceY(coordenada.y()));
     }
 
-    private boolean perteneceX(int x){
-        return (x >= 0 && x < ancho);
+    private boolean perteneceX(int x) {
+        return (x >= 0) && (x < ancho);
     }
 
-    private boolean perteneceY(int y){
+    private boolean perteneceY(int y) {
 
-        return (y >= 0 && y < alto);
+        return (y >= 0) && (y < alto);
     }
-
 
 
 }
